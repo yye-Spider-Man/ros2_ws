@@ -1,0 +1,71 @@
+slam_toolbox:
+  ros__parameters:
+    # 基本设置
+    use_sim_time: false
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    scan_topic: /scan
+    
+    # SLAM模式设置
+    mode: mapping # 可选: mapping 或 localization
+    debug_logging: false
+    throttle_scans: 1
+    
+    # 传感器参数 - 优化队列处理
+    transform_publish_period: 0.02
+    map_update_interval: 5.0  # 增加更新间隔
+    
+    # 激光扫描参数 (适配C1M1)
+    max_laser_range: 12.0
+    minimum_time_interval: 0.05   # 增加时间间隔
+    transform_timeout: 0.2       # 增加超时时间
+    tf_buffer_duration: 30.0     # 增加缓冲区时间
+    
+    # 队列设置
+    queue_size: 50              # 增加队列大小
+    
+    # 算法参数
+    resolution: 0.05
+    publish_pose_graph: true    # 暂时关闭位姿图发布以减少负载
+    
+    # 运动模型参数 - 放宽过滤条件
+    motion_filter:
+      {
+        "distance_threshold": 0.1,    # 放宽距离阈值
+        "angle_threshold": 0.05,       # 放宽角度阈值
+        "time_threshold": 0.2         # 放宽时间阈值
+      }
+      
+    # 激光数据处理
+    laser:
+      {
+        "min_range": 0.2,
+        "max_range": 12.0,
+        "use_inf": true
+      }
+      
+    # 消息过滤器参数
+    filter:
+      {
+        "type": "tf_message_filter",
+        "queue_size": 100,
+        "timeout": 0.2
+      }
+      
+    # 定位模式参数
+    localization_mode: 
+      {
+        "odom_frame": "odom",
+        "base_frame": "base_link",
+        "map_frame": "map",
+        "initial_pose":
+          {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0,
+            "roll": 0.0,
+            "pitch": 0.0,
+            "yaw": 0.0
+          }
+      }

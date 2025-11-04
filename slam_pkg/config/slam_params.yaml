@@ -1,0 +1,23 @@
+slam_toolbox:
+  ros__parameters:
+    # 模式：online_async 实时建图
+    mode: mapping  # 或 localization 用预建图
+    # 地图分辨/大小
+    resolution: 0.05
+    max_laser_range: 10.0  # RPLIDAR 范围
+    minimum_time_interval: 0.5
+    transform_publish_period: 0.02
+    map_update_interval: 2.0  # 每 2s 更新 map，减负载
+    # Odometry 和 Scan 融合
+    odom_frame: odom
+    map_frame: map
+    base_frame: base_link
+    scan_topic: /scan
+    odom_topic: /odometry/local  # 您的 EKF 输出
+    use_scan_matching: true
+    use_map_saver: true  # 保存 map.pgm + yaml
+    # 噪声调优（基于 IMU 辅助 odom）
+    correlation_search_space_dimension: 0.5
+    correlation_search_space_resolution: 0.01
+    loop_search_space_dimension: 5.0
+    # 保存序列：ros2 service call /slam_toolbox/serialize_map slam_toolbox/srv/SerializePoseGraph "{filename: '/home/user/map.posegraph'}"

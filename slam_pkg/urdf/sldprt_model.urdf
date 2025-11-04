@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<robot name="sldprt_model">
+  <link name="map"/>
+
+  <joint name="map_to_model" type="fixed">
+    <parent link="map"/>
+    <child link="sldprt_model"/>
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </joint>
+
+  <link name="sldprt_model">
+    <visual>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://slam_pkg/meshes/model.STL" scale="1 1 1"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0.0 0.0 0.8 1.0"/>
+      </material>
+    </visual>
+    <collision>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <geometry>
+        <mesh filename="package://slam_pkg/meshes/model.STL" scale="1 1 1"/>
+      </geometry>
+    </collision>
+  </link>
+</robot>

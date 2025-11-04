@@ -1,0 +1,18 @@
+Visualization Manager:
+  Displays:
+    - Class: rviz_common/Map
+      Topic: /map
+      Value: true
+    - Class: rviz_common/LaserScan
+      Topic: /scan
+      Value: true
+    - Class: rviz_common/Odometry
+      Topic: /odometry/local
+      Value: true
+    - Class: rviz_common/Pose
+      Topic: /slam_toolbox/pose
+      Value: true  # 当前位置箭头
+    - Class: tf2_tools/TF
+      Value: true
+  Global Options:
+    Fixed Frame: map

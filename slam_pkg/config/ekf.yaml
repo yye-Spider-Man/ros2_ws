@@ -1,0 +1,31 @@
+ekf_filter_node:
+  ros__parameters:
+    frequency: 10.0
+    two_d_mode: true
+    transform_time_offset: 0.0
+    transform_timeout: 0.0
+    # odom0: rf2o
+    odom0: /odom_rf2o
+    odom0_config: [true, true, false,  # x y z
+                   false, false, true,  # roll pitch yaw
+                   true, true, false,  # vx vy vz
+                   false, false, true, # vroll vpitch vyaw
+                   false, false, false]
+    odom0_differential: false
+    odom0_relative: false
+    odom0_queue_depth: 10
+    # imu0: IMU
+    imu0: /imu/data
+    imu0_config: [false, false, false,  # x y z
+                  true, true, true,   # roll pitch yaw
+                  false, false, false, # vx vy vz
+                  true, true, true,   # vroll vpitch vyaw
+                  false, false, false]
+    imu0_differential: false
+    imu0_relative: false
+    imu0_queue_depth: 10
+    # 输出
+    world_frame: odom
+    odom_frame: odom
+    base_link_frame: base_link  # 统一
+    publish_tf: true
